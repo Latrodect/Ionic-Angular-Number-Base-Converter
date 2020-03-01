@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Change Base</ion-title>
+    <ion-buttons slot="start">
+      
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list id="List">
+    <ion-item><ion-label id="labelsTwo" color="primary">Pick your number to translate</ion-label>
+      
+    </ion-item>
+    <ion-row text-center>
+      <ion-col id="ResultCol" size = "4">From :</ion-col>
+      <ion-col id="ResultColTwo" size = "4">To :</ion-col>     
+    </ion-row>
+    <ion-row text-center>
+      <ion-col id="ResultColThree" size = "4">{{selected[0]}}</ion-col>
+      <ion-col id="ResultColFour" size = "4">{{selected[1]}}</ion-col>
+    </ion-row>
+    <ion-button id="SelectButton" fill="clear" (click)='showAdvancedPicker()' >Choose Bases</ion-button>
+    <ion-item>
+    
+    </ion-item>
+    <ion-label id="labels" color="primary">Give your number to translate</ion-label>
+    <ion-item>
+      
+      <ion-input id="SignIn" placeholder="Number" [(ngModel)] = "userInput">
+        <ion-icon id="icon" name="exit-outline"></ion-icon>
+  
+      </ion-input>
+      <ion-button slot="end" fill="clear" (click) = "Calculater()">Translate</ion-button>
+      
+    </ion-item>
+   
+      <ion-label id="labelsResult" color="primary"> Convertation Result</ion-label>
+
+  
+    <ion-text><p id="p1"></p></ion-text>
+  
+  
+<ion-content>
+
+</ion-content>

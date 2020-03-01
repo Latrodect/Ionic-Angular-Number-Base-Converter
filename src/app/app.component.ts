@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Router } from '@angular/router';
+
+import { getLocaleTimeFormat } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +14,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
+  pages:any[]=[];
+ 
   public appPages = [
     {
       title: 'Inbox',
@@ -43,12 +48,15 @@ export class AppComponent implements OnInit {
       icon: 'warning'
     }
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private router:Router
+    
+
   ) {
     this.initializeApp();
   }
@@ -57,6 +65,21 @@ export class AppComponent implements OnInit {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.pages = [{
+        pagename:"Base Converter",
+        icon:"bar-chart",
+        url:"/pageone"
+      },
+      {
+        pagename:"Helper",
+        icon:"help",
+        url:"/pagetwo"
+      },
+      {
+        pagename:"Options",
+        icon:"settings",
+        url:"/pagethree"
+      }]
     });
   }
 
@@ -65,5 +88,11 @@ export class AppComponent implements OnInit {
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }
+
+  
+  }
+  Goto(page)
+  {
+      this.router.navigate([page.url]);
   }
 }
